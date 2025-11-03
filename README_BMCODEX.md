@@ -273,3 +273,8 @@ MIT License - zobacz plik LICENSE
 **Ostatnia aktualizacja:** 30 października 2025
 
 **Status:** ✅ Gotowe do wdrożenia
+
+## GitHub Repository
+
+https://github.com/bmcodex/bmcodex-sklep
+
