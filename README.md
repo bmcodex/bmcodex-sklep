@@ -1,66 +1,192 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# BMCODEX - Sklep z częściami do tuningu
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🚗 O Projekcie
 
-## About Laravel
+**BMCODEX** to nowoczesny sklep internetowy specjalizujący się w sprzedaży części do tuningu samochodów. Projekt został stworzony w ramach pracy zaliczeniowej z wykorzystaniem technologii **Laravel 11**, **MySQL 8+**, **HTML5**, **CSS3** i **JavaScript**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Identyfikacja wizualna:
+- **Nazwa:** BMCODEX
+- **Slogan:** Performance Without Limits
+- **Kolory marki:**
+  - Akcent: `#FF4500` (pomarańczowy – energetyczny, sportowy)
+  - Tło: `#1A1A1A` (grafit/czarny – elegancki, techniczny)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Funkcjonalności
 
-## Learning Laravel
+### Dla Klientów:
+- ✅ **Przeglądanie produktów** z filtrowaniem (kategorie, przedział cenowy, wyszukiwanie)
+- ✅ **Zakupy bez rejestracji** (jako gość)
+- ✅ **Rejestracja i logowanie** z potwierdzeniem email
+- ✅ **Reset hasła** przez email
+- ✅ **Koszyk zakupowy** z możliwością dodawania wielu artykułów
+- ✅ **Panel klienta** z:
+  - Historią zamówień
+  - Edycją danych osobowych
+  - Listą ulubionych produktów
+- ✅ **Potwierdzenie zamówienia** mailem (opcjonalnie)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Dla Administratorów:
+- ✅ **Panel administracyjny** z CRUD dla:
+  - Produktów
+  - Kategorii
+  - Zamówień
+  - Użytkowników
+- ✅ **Zarządzanie pracownikami** (role: user, admin)
+- ✅ **Raporty sprzedaży** z wykorzystaniem widoków SQL
+- ✅ **Monitoring stanu magazynowego**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠 Technologie
 
-## Laravel Sponsors
+### Backend:
+- **PHP:** 8.2+
+- **Laravel:** 11.x
+- **MySQL:** 8.0+
+- **Composer:** 2.6+
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Frontend:
+- **HTML5**
+- **CSS3** (Custom styling)
+- **JavaScript** (Vanilla JS)
+- **Blade Templates** (Laravel)
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 📦 Instalacja
 
-## Contributing
+### Wymagania:
+- PHP 8.2+
+- MySQL 8.0+
+- Composer 2.6+
+- Git
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Kroki instalacji:
 
-## Code of Conduct
+1. **Klonowanie repozytorium:**
+```bash
+git clone https://github.com/bmcodex/bmcodex-sklep.git
+cd bmcodex-sklep
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Instalacja zależności:**
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+3. **Konfiguracja środowiska:**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. **Edycja pliku `.env`:**
+```env
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=bmcodex_db
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-## License
+5. **Utworzenie bazy danych:**
+```bash
+mysql -u root -p
+CREATE DATABASE bmcodex_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+EXIT;
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+6. **Uruchomienie migracji:**
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+7. **Uruchomienie serwera:**
+```bash
+php artisan serve
+```
+
+Aplikacja będzie dostępna pod adresem: `http://localhost:8000`
+
+---
+
+## 🗄 Baza Danych
+
+### Struktura tabel:
+
+1. **users** - Użytkownicy (klienci, administratorzy)
+2. **categories** - Kategorie produktów
+3. **products** - Produkty
+4. **orders** - Zamówienia
+5. **order_items** - Pozycje zamówień
+6. **cart_items** - Koszyk zakupowy
+7. **favorites** - Ulubione produkty
+
+---
+
+## 🔧 Zaawansowane Funkcje SQL
+
+### Widoki (Views):
+
+1. **sales_report** - Raport sprzedaży z podsumowaniem zamówień
+2. **product_stats** - Statystyki produktów (sprzedaż, przychód)
+3. **top_products** - Najlepiej sprzedające się produkty
+4. **user_order_history** - Historia zamówień użytkowników
+
+### Wyzwalacze (Triggers):
+
+1. **update_stock_on_order_insert** - Automatyczne zmniejszanie stanu magazynowego
+2. **restore_stock_on_order_delete** - Przywracanie stanu magazynowego po usunięciu
+3. **restore_stock_on_order_cancel** - Przywracanie stanu magazynowego po anulowaniu
+
+### Funkcje (Functions):
+
+1. **calculate_order_total(order_id)** - Obliczanie całkowitej wartości zamówienia
+2. **is_product_available(product_id, quantity)** - Sprawdzanie dostępności produktu
+
+---
+
+## 📚 Dokumentacja
+
+Projekt zawiera pełną dokumentację:
+
+1. **DOKUMENTACJA.md** - Pełna dokumentacja techniczna
+2. **SQL_FEATURES.md** - Opis zaawansowanych funkcji SQL
+3. **INSTRUKCJA_WDROŻENIA.md** - Instrukcja wdrożenia na serwerze
+4. **README.md** - Ten plik
+
+---
+
+## 👤 Autor
+
+**Michał Nurzyński**
+- Email: admin@bmcodex.com
+- GitHub: [@bmcodex](https://github.com/bmcodex)
+
+---
+
+## 🔗 Linki
+
+- **Repozytorium GitHub:** https://github.com/bmcodex/bmcodex-sklep
+
+---
+
+## 📝 Dane Testowe
+
+**Administrator:**
+- Email: `admin@bmcodex.com`
+- Hasło: `admin123`
+
+**Klient testowy:**
+- Email: `customer@example.com`
+- Hasło: `customer123`
+
+---
+
+**Ostatnia aktualizacja:** 03 listopada 2025
+
+**Status projektu:** ✅ Gotowy do wdrożenia
