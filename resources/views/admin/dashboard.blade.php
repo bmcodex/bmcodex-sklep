@@ -238,7 +238,13 @@
                     @foreach($recentOrders as $order)
                         <tr>
                             <td>#{{ $order->id }}</td>
-                            <td>{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
+                            <td>
+                                @if($order->user)
+                                    {{ $order->user->first_name }} {{ $order->user->last_name }}
+                                @else
+                                    <span style="color: #999;">Gość ({{ $order->guest_email }})</span>
+                                @endif
+                            </td>
                             <td>{{ $order->created_at->format('d.m.Y H:i') }}</td>
                             <td>
                                 <span class="status-badge status-{{ $order->status }}">

@@ -114,7 +114,7 @@ class AdminController extends Controller
      */
     public function orders()
     {
-        $orders = Order::with(['user', 'orderItems'])
+        $orders = Order::with(['user', 'items.product'])
             ->orderBy('created_at', 'desc')
             ->paginate(20);
 
