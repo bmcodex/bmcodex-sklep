@@ -222,7 +222,7 @@
                     @if(auth()->user()->isAdmin())
                         <li><a href="{{ route('admin.dashboard') }}">Panel Admin</a></li>
                     @endif
-                    <li><a href="{{ route('dashboard') }}">Moje konto</a></li>
+                    <li><a href="{{ route('home') }}">Moje konto</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                             @csrf

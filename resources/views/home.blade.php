@@ -187,6 +187,7 @@
                         @if($product->stock > 0)
                             <form action="{{ route('cart.add', $product) }}" method="POST" style="flex: 1;">
                                 @csrf
+                                <input type="hidden" name="quantity" value="1">
                                 <button type="submit" class="btn btn-primary" style="width: 100%;">
                                     🛒 Dodaj
                                 </button>

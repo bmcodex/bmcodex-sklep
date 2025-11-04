@@ -39,12 +39,43 @@ Route::middleware('auth')->group(function () {
 // Koszyk
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::patch('/cart/update/{cartItem}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{cartItem}', [CartController::class, 'remove'])->name('cart.remove');
+Route::delete('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 // Zamowienia
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+Route::get('/order/{order}/confirmation', [OrderController::class, 'confirmation'])->name('order.confirmation');
 
 // Panel admina
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    
+    // Products
+    Route::get('/products', [AdminController::class, 'products'])->name('products.index');
+    Route::get('/products/create', function() { return redirect()->route('admin.products.index'); })->name('products.create');
+    Route::get('/products/low-stock', function() { return redirect()->route('admin.products.index'); })->name('products.low-stock');
+    Route::post('/products', [AdminController::class, 'storeProduct'])->name('products.store');
+    Route::patch('/products/{product}', [AdminController::class, 'updateProduct'])->name('products.update');
+    Route::delete('/products/{product}', [AdminController::class, 'deleteProduct'])->name('products.destroy');
+    
+    // Orders
+    Route::get('/orders', [AdminController::class, 'orders'])->name('orders.index');
+    Route::get('/orders/{order}', function($order) { return redirect()->route('admin.orders.index'); })->name('orders.show');
+    Route::patch('/orders/{order}/status', [AdminController::class, 'updateOrderStatus'])->name('orders.updateStatus');
+    
+    // Users
+    Route::get('/users', [AdminController::class, 'users'])->name('users.index');
+    Route::patch('/users/{user}/role', [AdminController::class, 'updateUserRole'])->name('users.updateRole');
+    Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.destroy');
+    
+    // Categories
+    Route::get('/categories', [AdminController::class, 'categories'])->name('categories.index');
+    Route::post('/categories', [AdminController::class, 'storeCategory'])->name('categories.store');
+    Route::patch('/categories/{category}', [AdminController::class, 'updateCategory'])->name('categories.update');
+    Route::delete('/categories/{category}', [AdminController::class, 'deleteCategory'])->name('categories.destroy');
+    
+    // Reports
+    Route::get('/reports', function() { return redirect()->route('admin.dashboard'); })->name('reports');
 });
