@@ -164,7 +164,7 @@ Projekt zawiera pełną dokumentację:
 ## 👤 Autor
 
 **Michał Nurzyński**
-- Email: admin@bmcodex.com
+- Email: admin@bmcodex.pl
 - GitHub: [@bmcodex](https://github.com/bmcodex)
 
 ---
