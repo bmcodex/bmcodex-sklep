@@ -129,6 +129,56 @@
         color: var(--text-gray);
         font-size: 1.2rem;
     }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .hero {
+            padding: 2rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+        }
+        
+        .hero .tagline {
+            font-size: 1.2rem;
+        }
+        
+        .filters {
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .filters select,
+        .filters input,
+        .filters button {
+            width: 100%;
+        }
+        
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .product-actions {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 1.5rem;
+        }
+        
+        .hero .tagline {
+            font-size: 1rem;
+        }
+        
+        .product-image {
+            height: 150px;
+        }
+    }
 </style>
 @endsection
 

@@ -196,11 +196,57 @@
             nav {
                 flex-direction: column;
                 gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
             }
             
             .nav-links {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.8rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .container {
+                padding: 0.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
             }
         }
     </style>
