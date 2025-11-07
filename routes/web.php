@@ -77,5 +77,5 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::delete('/categories/{category}', [AdminController::class, 'deleteCategory'])->name('categories.destroy');
     
     // Reports
-    Route::get('/reports', function() { return redirect()->route('admin.dashboard'); })->name('reports');
+    Route::get('/reports', [AdminController::class, 'reports'])->name('reports');
 });
