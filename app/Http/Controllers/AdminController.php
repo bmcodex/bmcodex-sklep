@@ -241,7 +241,7 @@ class AdminController extends Controller
             ->join('products', 'order_items.product_id', '=', 'products.id')
             ->join('orders', 'order_items.order_id', '=', 'orders.id')
             ->where('orders.status', '!=', 'cancelled')
-            ->select('products.name', DB::raw('SUM(order_items.quantity) as total_sold'), DB::raw('SUM(order_items.quantity * order_items.price) as total_revenue'))
+            ->select('products.name', DB::raw('SUM(order_items.quantity) as total_sold'), DB::raw('SUM(order_items.quantity * order_items.price_per_item) as total_revenue'))
             ->groupBy('products.id', 'products.name')
             ->orderBy('total_sold', 'desc')
             ->limit(10)
