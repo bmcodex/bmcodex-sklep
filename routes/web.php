@@ -34,6 +34,9 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/account', function() {
+        return view('account');
+    })->name('account');
 });
 
 // Koszyk
@@ -76,6 +79,5 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::patch('/categories/{category}', [AdminController::class, 'updateCategory'])->name('categories.update');
     Route::delete('/categories/{category}', [AdminController::class, 'deleteCategory'])->name('categories.destroy');
     
-    // Reports
-    Route::get('/reports', [AdminController::class, 'reports'])->name('reports');
+
 });

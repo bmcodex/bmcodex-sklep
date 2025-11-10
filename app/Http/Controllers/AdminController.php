@@ -223,53 +223,5 @@ class AdminController extends Controller
         return back()->with('success', 'Kategoria została usunięta!');
     }
 
-    /**
-     * Show reports page.
-     */
-    public function reports()
-    {
-        // Sprzedaż w ostatnich 30 dniach
-        $salesLast30Days = Order::where('created_at', '>=', now()->subDays(30))
-            ->where('status', '!=', 'cancelled')
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as orders_count, SUM(total_price) as revenue')
-            ->groupBy('date')
-            ->orderBy('date', 'desc')
-            ->get();
 
-        // Najpopularniejsze produkty
-        $topProducts = DB::table('order_items')
-            ->join('products', 'order_items.product_id', '=', 'products.id')
-            ->join('orders', 'order_items.order_id', '=', 'orders.id')
-            ->where('orders.status', '!=', 'cancelled')
-            ->select('products.name', DB::raw('SUM(order_items.quantity) as total_sold'), DB::raw('SUM(order_items.quantity * order_items.price_per_item) as total_revenue'))
-            ->groupBy('products.id', 'products.name')
-            ->orderBy('total_sold', 'desc')
-            ->limit(10)
-            ->get();
-
-        // Statystyki miesięczne
-        $monthlyStats = Order::where('created_at', '>=', now()->subMonths(12))
-            ->where('status', '!=', 'cancelled')
-            ->selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as orders_count, SUM(total_price) as revenue')
-            ->groupBy('year', 'month')
-            ->orderBy('year', 'desc')
-            ->orderBy('month', 'desc')
-            ->get();
-
-        // Ogólne statystyki
-        $totalRevenue = Order::where('status', '!=', 'cancelled')->sum('total_price');
-        $totalOrders = Order::count();
-        $averageOrderValue = $totalOrders > 0 ? $totalRevenue / $totalOrders : 0;
-        $totalCustomers = User::where('role', 'user')->count();
-
-        return view('admin.reports', compact(
-            'salesLast30Days',
-            'topProducts',
-            'monthlyStats',
-            'totalRevenue',
-            'totalOrders',
-            'averageOrderValue',
-            'totalCustomers'
-        ));
-    }
 }
