@@ -34,9 +34,9 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/account', function() {
-        return view('account');
-    })->name('account');
+    Route::get('/account', [AuthController::class, 'showAccount'])->name('account');
+    Route::patch('/account', [AuthController::class, 'updateAccount'])->name('account.update');
+    Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.details');
 });
 
 // Koszyk

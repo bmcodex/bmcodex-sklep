@@ -79,16 +79,42 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    /**
+       /**
      * Handle user logout.
      */
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-        return redirect()->route('home')->with('success', 'Wylogowano pomyślnie!');
+        return redirect()->route('home')->with('success', 'Zostałeś wylogowany.');
+    }
+    
+    /**
+     * Show user account page.
+     */
+    public function showAccount()
+    {
+        $orders = Auth::user()->orders()->with('items.product')->latest()->paginate(10);
+        return view('account', compact('orders'));
+    }
+    
+    /**
+     * Update user account information.
+     */
+    public function updateAccount(Request $request)
+    {
+        $user = Auth::user();
+        
+        $validated = $request->validate([
+            'first_name' => ['nullable', 'string', 'max:100'],
+            'last_name' => ['nullable', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'phone' => ['nullable', 'string', 'max:20'],
+        ]);
+        
+        $user->update($validated);
+        
+        return back()->with('success', 'Profil został zaktualizowany!');
     }
 }
