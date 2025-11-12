@@ -191,12 +191,33 @@
             color: white;
         }
         
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
             nav {
-                flex-direction: column;
-                gap: 1rem;
+                flex-wrap: wrap;
                 padding: 1rem;
+            }
+            
+            .nav-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
             }
             
             .logo {
@@ -208,6 +229,14 @@
                 gap: 0.8rem;
                 width: 100%;
                 text-align: center;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+            
+            .nav-links.active {
+                max-height: 500px;
+                margin-top: 1rem;
             }
             
             .container {
@@ -256,11 +285,16 @@
 <body>
     <header>
         <nav>
-            <a href="{{ route('home') }}" class="logo">
-                BMC<span>ODEX</span>
-            </a>
+            <div class="nav-header">
+                <a href="{{ route('home') }}" class="logo">
+                    <span>BM</span>CODEX
+                </a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    ☰
+                </button>
+            </div>
             
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="{{ route('home') }}">Strona główna</a></li>
                 <li><a href="{{ route('products.index') }}">Produkty</a></li>
                 
@@ -268,7 +302,7 @@
                     @if(auth()->user()->isAdmin())
                         <li><a href="{{ route('admin.dashboard') }}">Panel Admin</a></li>
                     @endif
-                    <li><a href="{{ route('home') }}">Moje konto</a></li>
+                    <li><a href="{{ route('account') }}">Moje konto</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                             @csrf
@@ -320,6 +354,24 @@
         <p>&copy; 2025 BMCODEX - Performance Without Limits</p>
         <p>Wszystkie prawa zastrzeżone | Michał Nurzyński</p>
     </footer>
+    
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
     
     @yield('scripts')
 </body>
