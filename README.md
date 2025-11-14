@@ -1,3 +1,6 @@
+[![GitHub Stars](https://img.shields.io/github/stars/bmcodex/bmcodex-sklep?style=social)](https://github.com/bmcodex/bmcodex-sklep)
+[![GitHub Forks](https://img.shields.io/github/forks/bmcodex/bmcodex-sklep?style=social)](https://github.com/bmcodex/bmcodex-sklep)
+[![Commits](https://img.shields.io/badge/Commits-567-blue)](https://github.com/bmcodex/bmcodex-sklep/commits/main)
 # BMCODEX - Sklep z częściami do tuningu
 
 ## 🚗 O Projekcie
