@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/account', [AuthController::class, 'showAccount'])->name('account');
     Route::patch('/account', [AuthController::class, 'updateAccount'])->name('account.update');
     Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.details');
+    
+    // Favorites
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/favorites/add/{product}', [FavoriteController::class, 'add'])->name('favorites.add');
+    Route::delete('/favorites/remove/{product}', [FavoriteController::class, 'remove'])->name('favorites.remove');
+    Route::post('/favorites/toggle/{product}', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
 });
 
 // Koszyk
